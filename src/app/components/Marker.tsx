@@ -1,5 +1,6 @@
 import { AdvancedMarker, InfoWindow, useAdvancedMarkerRef } from "@vis.gl/react-google-maps";
-import { useState } from "react";
+import Image from "next/image";
+import bousse from '../../../public/images/bousse.jpg'
 
 interface Props {
     markerInfo: {
@@ -9,6 +10,9 @@ interface Props {
             lat: number
             lng: number
         },
+        boulders: [{
+            name: string,
+        }]
         link: string,
     }
     selectedMarker: any,
@@ -17,7 +21,6 @@ interface Props {
 
 export default function Marker({ markerInfo, selectedMarker, setSelectedMarker }: Props) {
     const [markerRef, marker] = useAdvancedMarkerRef();
-    const [infowindowOpen, setInfowindowOpen] = useState(false);
 
     return (
         <>
@@ -31,9 +34,10 @@ export default function Marker({ markerInfo, selectedMarker, setSelectedMarker }
                 <InfoWindow
                     anchor={marker}
                     maxWidth={250}
-                    onCloseClick={() => setInfowindowOpen(false)}>
-                    <div className="flex flex-col">
+                    onCloseClick={() => setSelectedMarker("")}>
+                    <div className="flex flex-col max-w-[250px]">
                         <h1>{markerInfo.title}</h1>
+                        <Image className="w-full" src={bousse} alt="" />
                     </div>
                 </InfoWindow>
             )}
