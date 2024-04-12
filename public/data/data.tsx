@@ -1,3 +1,15 @@
+import bousse from '../images/bousse.jpg'
+import voodoo from '../images/voodoo.jpg'
+import grodan from '../images/grodan.jpg'
+import andraTaket from '../images/andraTaket.jpg'
+import koksvaggen from '../images/koksvaggen.jpg'
+import angsvaggen from '../images/angsvaggen.jpg'
+import mpfc from '../images/mpfc.jpg'
+import dodsdoden from '../images/dodsdoden.jpg'
+import trollblocket from '../images/trollblocket.jpg'
+
+
+
 export const data = [
     {
         id: "1",
@@ -12,7 +24,8 @@ export const data = [
                 grad: "7B+"
             },
         ],
-        link: "",
+        links: [""],
+        images: [bousse]
     },
     {
         id: "2",
@@ -21,7 +34,8 @@ export const data = [
             lat: 57.7450511,
             lng: 12.0589301,
         },
-        link: "",
+        links: [""],
+        images: [voodoo]
     },
     {
         id: "3",
@@ -30,7 +44,8 @@ export const data = [
             lat: 57.745642,
             lng: 12.057577,
         },
-        link: "",
+        links: [""],
+        images: [koksvaggen]
     },
     {
         id: "4",
@@ -39,7 +54,8 @@ export const data = [
             lat: 57.748318,
             lng: 12.050203,
         },
-        link: "",
+        links: [""],
+        images: []
     },
     {
         id: "5",
@@ -48,7 +64,8 @@ export const data = [
             lat: 57.7448,
             lng: 12.0709,
         },
-        link: "",
+        links: [""],
+        images: []
     },
     {
         id: "6",
@@ -57,7 +74,8 @@ export const data = [
             lat: 57.7430,
             lng: 12.0693,
         },
-        link: "",
+        links: [""],
+        images: []
     },
     {
         id: "7",
@@ -66,7 +84,8 @@ export const data = [
             lat: 57.7444,
             lng: 12.0694,
         },
-        link: "",
+        links: [""],
+        images: []
     },
     {
         id: "8",
@@ -75,7 +94,8 @@ export const data = [
             lat: 57.7445,
             lng: 12.0524,
         },
-        link: "",
+        links: [""],
+        images: []
     },
     {
         id: "9",
@@ -84,7 +104,8 @@ export const data = [
             lat: 57.7467,
             lng: 12.0563,
         },
-        link: "",
+        links: [""],
+        images: [trollblocket]
     },
     {
         id: "10",
@@ -93,7 +114,8 @@ export const data = [
             lat: 57.7434,
             lng: 12.0632,
         },
-        link: "",
+        links: [""],
+        images: []
     },
     {
         id: "11",
@@ -102,7 +124,8 @@ export const data = [
             lat: 57.7457,
             lng: 12.0561,
         },
-        link: "",
+        links: [""],
+        images: []
     },
     {
         id: "12",
@@ -111,7 +134,8 @@ export const data = [
             lat: 57.7455704,
             lng: 12.0569600,
         },
-        link: "",
+        links: [""],
+        images: [angsvaggen]
     },
     {
         id: "13",
@@ -120,7 +144,8 @@ export const data = [
             lat: 57.7450908,
             lng: 12.0579561,
         },
-        link: "",
+        links: [""],
+        images: []
     },
     {
         id: "14",
@@ -129,7 +154,8 @@ export const data = [
             lat: 57.7453608,
             lng: 12.0587621,
         },
-        link: "",
+        links: [""],
+        images: [andraTaket]
     },
     {
         id: "15",
@@ -138,7 +164,8 @@ export const data = [
             lat: 57.7451030,
             lng: 12.0596499,
         },
-        link: "",
+        links: [""],
+        images: [grodan]
     },
     {
         id: "16",
@@ -147,7 +174,8 @@ export const data = [
             lat: 57.7448586,
             lng: 12.0605605,
         },
-        link: "",
+        links: [""],
+        images: [mpfc]
     },
     {
         id: "17",
@@ -156,6 +184,7 @@ export const data = [
             lat: 57.7448459,
             lng: 12.0614759,
         },
-        link: "",
+        links: [""],
+        images: [dodsdoden]
     },
 ]

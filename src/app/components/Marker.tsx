@@ -13,7 +13,8 @@ interface Props {
         boulders: [{
             name: string,
         }]
-        link: string,
+        links: string[],
+        images: [],
     }
     selectedMarker: any,
     setSelectedMarker: any,
@@ -37,10 +38,13 @@ export default function Marker({ markerInfo, selectedMarker, setSelectedMarker }
                     onCloseClick={() => setSelectedMarker("")}>
                     <div className="flex flex-col max-w-[250px]">
                         <h1>{markerInfo.title}</h1>
-                        <Image className="w-full" src={bousse} alt="" />
+                        {markerInfo.images.map((image) => {
+                            return <Image className="w-full" src={image} alt="" />
+                        })}
                     </div>
                 </InfoWindow>
             )}
         </>
     )
 }
+
