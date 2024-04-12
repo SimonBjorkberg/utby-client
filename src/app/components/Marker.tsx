@@ -10,13 +10,13 @@ interface Props {
             lat: number
             lng: number
         },
-        boulders: [{
+        boulders: {
             name: string,
             grad: string,
-        }]
-        links: [],
-        images: [any],
-    }
+        }[],
+        links: string[],
+        images: any[],
+    },
     selectedMarker: any,
     setSelectedMarker: any,
 }

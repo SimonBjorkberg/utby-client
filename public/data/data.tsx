@@ -22,7 +22,7 @@ export const data = [
             {
                 name: "La bousse ss",
                 grad: "7B+"
-            },
+            }
         ],
         links: [],
         images: [bousse]
@@ -34,6 +34,7 @@ export const data = [
             lat: 57.7450511,
             lng: 12.0589301,
         },
+        boulders: [],
         links: [],
         images: [voodoo]
     },
@@ -44,6 +45,7 @@ export const data = [
             lat: 57.745642,
             lng: 12.057577,
         },
+        boulders: [],
         links: [],
         images: [koksvaggen]
     },
@@ -54,6 +56,7 @@ export const data = [
             lat: 57.748318,
             lng: 12.050203,
         },
+        boulders: [],
         links: [],
         images: []
     },
@@ -64,6 +67,7 @@ export const data = [
             lat: 57.7448,
             lng: 12.0709,
         },
+        boulders: [],
         links: [],
         images: []
     },
@@ -74,6 +78,7 @@ export const data = [
             lat: 57.7430,
             lng: 12.0693,
         },
+        boulders: [],
         links: [],
         images: []
     },
@@ -84,6 +89,7 @@ export const data = [
             lat: 57.7444,
             lng: 12.0694,
         },
+        boulders: [],
         links: [],
         images: []
     },
@@ -94,6 +100,7 @@ export const data = [
             lat: 57.7445,
             lng: 12.0524,
         },
+        boulders: [],
         links: [],
         images: []
     },
@@ -104,6 +111,7 @@ export const data = [
             lat: 57.7467,
             lng: 12.0563,
         },
+        boulders: [],
         links: [],
         images: [trollblocket]
     },
@@ -114,6 +122,7 @@ export const data = [
             lat: 57.7434,
             lng: 12.0632,
         },
+        boulders: [],
         links: [],
         images: []
     },
@@ -124,6 +133,7 @@ export const data = [
             lat: 57.7457,
             lng: 12.0561,
         },
+        boulders: [],
         links: [],
         images: []
     },
@@ -134,6 +144,7 @@ export const data = [
             lat: 57.7455704,
             lng: 12.0569600,
         },
+        boulders: [],
         links: [],
         images: [angsvaggen]
     },
@@ -144,6 +155,7 @@ export const data = [
             lat: 57.7450908,
             lng: 12.0579561,
         },
+        boulders: [],
         links: [],
         images: []
     },
@@ -154,6 +166,7 @@ export const data = [
             lat: 57.7453608,
             lng: 12.0587621,
         },
+        boulders: [],
         links: [],
         images: [andraTaket]
     },
@@ -164,6 +177,7 @@ export const data = [
             lat: 57.7451030,
             lng: 12.0596499,
         },
+        boulders: [],
         links: [],
         images: [grodan]
     },
@@ -174,6 +188,7 @@ export const data = [
             lat: 57.7448586,
             lng: 12.0605605,
         },
+        boulders: [],
         links: [],
         images: [mpfc]
     },
@@ -184,6 +199,7 @@ export const data = [
             lat: 57.7448459,
             lng: 12.0614759,
         },
+        boulders: [],
         links: [],
         images: [dodsdoden]
     },
