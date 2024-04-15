@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Circle, Marker } from "react-leaflet";
+import { Marker } from "react-leaflet";
 import L from 'leaflet'
 
 interface LocationState {
