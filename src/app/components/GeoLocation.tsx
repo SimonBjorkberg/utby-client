@@ -52,7 +52,7 @@ export default function GeoLocation() {
         html: `
         <div class="relative w-4 h-4">
             <div class="absolute w-full h-full inset-0 animate-ping bg-blue-500 rounded-full"></div>
-            <div class="absolute h-1/2 w-1/2 self-center mx-auto inset-0 bg-blue-500 rounded-full"></div>
+            <div class="absolute h-1/2 w-1/2 my-auto mx-auto inset-0 bg-blue-500 rounded-full"></div>
         </div>
     `,
         iconSize: [20, 20],
