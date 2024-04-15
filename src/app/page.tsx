@@ -1,15 +1,12 @@
 'use client'
-
-import GoogleMaps from "./components/GoogleMaps";
+import Map from '../../public/js/index'
 import Navbar from "./components/Navbar";
 
 export default function Home() {
   return (
     <main className="h-dvh flex flex-col">
       <Navbar />
-      <div className="w-full h-full">
-        <GoogleMaps />
-      </div>
+      <Map />
     </main>
   );
 }

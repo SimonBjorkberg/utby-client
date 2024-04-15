@@ -23,7 +23,7 @@ export default function Navbar() {
                     </li>
                 </ul>
             </nav>
-            {nav && <div className="absolute w-full h-dvh bg-red-500 z-10 flex flex-col">
+            {nav && <div className="absolute w-full h-dvh bg-red-500 z-20 flex flex-col">
                 <div className="flex w-full p-2 justify-end">
                     <p onClick={() => setNav(false)}>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-8 h-8">
