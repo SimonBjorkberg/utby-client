@@ -4,7 +4,7 @@ interface Props {
         path: string,
     }
     setSelectedPath: any,
-    selectedPath: any
+    selectedPath: any,
 }
 
 export default function Path({ boulder, setSelectedPath, selectedPath }: Props) {

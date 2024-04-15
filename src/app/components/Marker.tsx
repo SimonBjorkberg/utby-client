@@ -18,6 +18,7 @@ interface Props {
             cragLink: string,
             description: string,
             path: string,
+            imageRef: number,
         }[],
         images: any[],
     },
@@ -44,10 +45,7 @@ export default function Marker({ markerInfo, selectedMarker, setSelectedMarker }
                     onCloseClick={() => setSelectedMarker("")}>
                     <div className="flex flex-col max-w-[250px]">
                         <h1 className="font-bold text-center text-[15px] mb-1">{markerInfo.title}</h1>
-                        {markerInfo.images.map((image: any, i: number) => {
-                            return <Image key={i} className="w-full" src={image} alt="" />
-
-                        })}
+                        <Image className="w-full" src={markerInfo.images[0]} alt="" />
                         <div className="w-full h-10 gap-2 flex justify-between items-center mt-1">
                             <button onClick={() => router.push(`/sector?id=${markerInfo.id}`)} >Test</button>
                         </div>
