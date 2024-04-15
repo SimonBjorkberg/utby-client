@@ -47,7 +47,7 @@ export default function Sector() {
                 {sector && <main className="flex flex-col items-center justify-between w-full h-dvh">
                     <h2 className="py-2 text-xl font-bold">{sector.title}</h2>
                     <div>
-                        {sector.images[0] && <svg width={800} height={600} viewBox="0 0 800 600" className="object-fit max-w-[800px] bg-neutral-900" xmlns="http://www.w3.org/2000/svg">
+                        {sector.images[0] && <svg width={800} viewBox="0 0 800 600" className="object-fit w-full md:h-[600px] h-[400px] bg-neutral-900" xmlns="http://www.w3.org/2000/svg">
                             <image href={sector.images[0].src} className="object-fit w-full h-full" />
                             {sector.boulders.map((boulder, i: number) => {
                                 return <Path key={i} boulder={boulder} setSelectedPath={setSelectedPath} selectedPath={selectedPath} />
