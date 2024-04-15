@@ -1,6 +1,7 @@
 import { AdvancedMarker, InfoWindow, useAdvancedMarkerRef } from "@vis.gl/react-google-maps";
 import Image from "next/image";
-import bousse from '../../../public/images/bousse.jpg'
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface Props {
     markerInfo: {
@@ -14,7 +15,8 @@ interface Props {
             name: string,
             grad: string,
         }[],
-        links: string[],
+        gboLink: string,
+        cragLink: string,
         images: any[],
     },
     selectedMarker: any,
@@ -23,6 +25,8 @@ interface Props {
 
 export default function Marker({ markerInfo, selectedMarker, setSelectedMarker }: Props) {
     const [markerRef, marker] = useAdvancedMarkerRef();
+
+    const router = useRouter()
 
     return (
         <>
@@ -35,13 +39,16 @@ export default function Marker({ markerInfo, selectedMarker, setSelectedMarker }
             {markerInfo.id === selectedMarker && (
                 <InfoWindow
                     anchor={marker}
-                    maxWidth={250}
                     onCloseClick={() => setSelectedMarker("")}>
                     <div className="flex flex-col max-w-[250px]">
-                        <h1>{markerInfo.title}</h1>
+                        <h1 className="font-bold text-center text-[15px] mb-1">{markerInfo.title}</h1>
                         {markerInfo.images.map((image: any, i: number) => {
                             return <Image key={i} className="w-full" src={image} alt="" />
+                            
                         })}
+                        <div className="w-full h-10 gap-2 flex justify-between items-center mt-1">
+                            <button onClick={() => router.push(`/sector?id=${markerInfo.id}`)} >Test</button>
+                        </div>
                     </div>
                 </InfoWindow>
             )}
