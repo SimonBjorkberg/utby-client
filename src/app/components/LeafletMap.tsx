@@ -15,8 +15,8 @@ export default function LeafletMap() {
             <TileLayer
                 url="https://maps.infra.entryscape.com/maps/basic/{z}/{x}/{y}.png?key=srAw96F43apXJCHhfWnu"
             />
-            {data.map((section) => {
-                return <Circle center={[section.position.lat, section.position.lng]} radius={4}>
+            {data.map((section, i) => {
+                return <Circle key={i} center={[section.position.lat, section.position.lng]} radius={4}>
                     <Popup>
                         <div className="flex flex-col w-[250px]">
                             <h1 className="font-bold text-center text-[15px] mb-1">{section.title}</h1>
