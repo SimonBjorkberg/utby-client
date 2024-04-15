@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Circle } from "react-leaflet";
+import { Circle, Marker } from "react-leaflet";
+import L from 'leaflet'
 
 interface LocationState {
     latitude: number | null;
@@ -46,9 +47,30 @@ export default function GeoLocation() {
         }
     }, []);
 
+    const customIcon = L.divIcon({
+        className: "",
+        html: `
+        <div class="relative w-4 h-4">
+            <div class="absolute w-full h-full inset-0 animate-ping bg-blue-500 rounded-full"></div>
+            <div class="absolute h-1/2 w-1/2 self-center mx-auto inset-0 bg-blue-500 rounded-full"></div>
+        </div>
+    `,
+        iconSize: [20, 20],
+    });
+
     return (
         <>
-            {location && <Circle center={[location.latitude ?? 0, location.longitude ?? 0]} radius={3} />}
+            {location && <Marker position={[location.latitude ?? 0, location.longitude ?? 0]} icon={customIcon}>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="#3182ce" // Adjust the fill color as needed
+                >
+                    <circle cx="12" cy="12" r="10" />
+                </svg>
+            </Marker>}
         </>
     )
 }
