@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation"
 import { data } from "../../../public/data/data"
 import { useEffect, useState } from "react"
 import Path from "../components/Path"
+import Link from "next/link"
 
 interface Sector {
     id: string,
@@ -18,15 +19,15 @@ interface Sector {
         description: string,
         grade: string,
         path: string,
+        gboLink: string,
+        cragLink: string,
     }[],
-    gboLink: string,
-    cragLink: string,
     images: any[],
 }
 
 export default function Sector() {
     const [sector, setSector] = useState<Sector | undefined>(undefined)
-    const [selectedPath, setSelectedPath] = useState("")
+    const [selectedPath, setSelectedPath] = useState("1")
 
     const params = useSearchParams()
     const p = params.get('id')
@@ -57,10 +58,16 @@ export default function Sector() {
                     </div>
                     <div className="w-full overflow-y-scroll">
                         {sector.boulders.map((boulder, i) => {
-                            return <div key={i} className={`h-20 ${i % 2 === 0 ? "bg-neutral-200" : "bg-white"}`} onClick={() => setSelectedPath(boulder.id)}>
-                                <div className={`w-full h-full flex flex-col justify-between p-3 ${selectedPath === boulder.id ? "bg-red-300" : ""}`}>
-                                    <p className="font-bold">{boulder.name}, <span className="font-light">{boulder.grade}</span></p>
-                                    <p className="font-light text-sm">{boulder.description}</p>
+                            return <div key={i} className={`h-24 ${i % 2 === 0 ? "bg-neutral-200" : "bg-white"}`} onClick={() => setSelectedPath(boulder.id)}>
+                                <div className={`w-full h-full flex flex-col p-1 justify-between border-t border-b ${selectedPath === boulder.id ? "bg-neutral-400 border-black" : "border-neutral-200"}`}>
+                                    <div>
+                                        <p className="font-bold text-sm">{boulder.name}, <span className="font-light">{boulder.grade}</span></p>
+                                        <p className="font-light text-sm">{boulder.description}</p>
+                                    </div>
+                                    <div className="flex justify-end gap-4">
+                                        {boulder.gboLink !== "" && <Link className="text-sm text-blue-500" href={boulder.gboLink} target="_blank">Gbo.Crimp</Link>}
+                                        {boulder.cragLink !== "" && <Link className="text-sm text-blue-500" href={boulder.cragLink} target="_blank">27Crags</Link>}
+                                    </div>
                                 </div>
                             </div>
                         })}
