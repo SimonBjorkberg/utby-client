@@ -56,7 +56,7 @@ export default function Sector() {
                     </div>
                     <div className="w-full overflow-y-scroll">
                         {sector.boulders.map((boulder, i) => {
-                            return <div key={i} className={`h-20 ${i % 2 === 0 ? "bg-neutral-200" : "bg-white"}`} key={i} onClick={() => setSelectedPath(boulder.id)}><p className={`w-full h-full p-3 ${selectedPath === boulder.id ? "bg-red-300" : ""}`}>{boulder.name}</p></div>
+                            return <div key={i} className={`h-20 ${i % 2 === 0 ? "bg-neutral-200" : "bg-white"}`} onClick={() => setSelectedPath(boulder.id)}><p className={`w-full h-full p-3 ${selectedPath === boulder.id ? "bg-red-300" : ""}`}>{boulder.name}</p></div>
                         })}
                     </div>
                 </main>}

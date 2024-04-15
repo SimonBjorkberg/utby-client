@@ -12,8 +12,10 @@ interface Props {
             lng: number
         },
         boulders: {
+            id: string,
             name: string,
-            grad: string,
+            grade: string,
+            path: string,
         }[],
         gboLink: string,
         cragLink: string,
@@ -44,7 +46,7 @@ export default function Marker({ markerInfo, selectedMarker, setSelectedMarker }
                         <h1 className="font-bold text-center text-[15px] mb-1">{markerInfo.title}</h1>
                         {markerInfo.images.map((image: any, i: number) => {
                             return <Image key={i} className="w-full" src={image} alt="" />
-                            
+
                         })}
                         <div className="w-full h-10 gap-2 flex justify-between items-center mt-1">
                             <button onClick={() => router.push(`/sector?id=${markerInfo.id}`)} >Test</button>
