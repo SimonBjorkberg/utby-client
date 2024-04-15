@@ -15,6 +15,7 @@ interface Sector {
     boulders: {
         id: string,
         name: string,
+        description: string,
         grade: string,
         path: string,
     }[],
@@ -57,8 +58,9 @@ export default function Sector() {
                     <div className="w-full overflow-y-scroll">
                         {sector.boulders.map((boulder, i) => {
                             return <div key={i} className={`h-20 ${i % 2 === 0 ? "bg-neutral-200" : "bg-white"}`} onClick={() => setSelectedPath(boulder.id)}>
-                                <div className={`w-full h-full p-3 ${selectedPath === boulder.id ? "bg-red-300" : ""}`}>
-                                    <p>{boulder.name}, <span>{boulder.grade}</span></p>
+                                <div className={`w-full h-full flex flex-col justify-between p-3 ${selectedPath === boulder.id ? "bg-red-300" : ""}`}>
+                                    <p className="font-bold">{boulder.name}, <span className="font-light">{boulder.grade}</span></p>
+                                    <p className="font-light text-sm">{boulder.description}</p>
                                 </div>
                             </div>
                         })}

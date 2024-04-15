@@ -1,6 +1,5 @@
 import { AdvancedMarker, InfoWindow, useAdvancedMarkerRef } from "@vis.gl/react-google-maps";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 interface Props {
@@ -15,6 +14,7 @@ interface Props {
             id: string,
             name: string,
             grade: string,
+            description: string,
             path: string,
         }[],
         gboLink: string,
