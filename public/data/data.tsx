@@ -181,7 +181,7 @@ export const data = [
         boulders: [
             {
                 id: "1",
-                path: "",
+                path: "m236.66667,382.5c0,0 -3.33333,-241.66667 -3.33334,-241.66667",
                 description: "Etablera dig på listen nere till vänster",
                 name: "Voodoo lågstart",
                 cragLink: "https://27crags.com/crags/utby-boulder/routes/voodo-lagstart",
@@ -191,7 +191,7 @@ export const data = [
             },
             {
                 id: "2",
-                path: "",
+                path: "m230.83333,286.66667l1.66666,-141.66667",
                 description: "Hoppstart till dålig list",
                 name: "Voodoo",
                 cragLink: "https://27crags.com/crags/utby-boulder/routes/voodoo-40233",
@@ -201,7 +201,7 @@ export const data = [
             },
             {
                 id: "3",
-                path: "",
+                path: "m280,289.16667l113.33333,-202.5",
                 description: "Startar på Voodoos grepp, höger fot på jugg",
                 name: "Barnkalas",
                 cragLink: "https://27crags.com/crags/utby-boulder/routes/barnkalas",
@@ -211,7 +211,7 @@ export const data = [
             },
             {
                 id: "4",
-                path: "",
+                path: "m454.16667,464.16667c0,-2.5 17.5,-120.83333 -17.50001,-375.83333",
                 description: "sittstart areten längst till höger",
                 name: "Kraftkalas ss",
                 cragLink: "https://27crags.com/crags/utby-boulder/routes/kraftkalas-ss",
@@ -221,7 +221,7 @@ export const data = [
             },
             {
                 id: "5",
-                path: "",
+                path: "m467.50001,339.99999c-4.16667,-83.34072 11.66667,-75.91278 -30.83335,-251.66666",
                 description: "Areten längst till höger",
                 name: "Kraftkalas",
                 cragLink: "https://27crags.com/crags/utby-boulder/routes/kraftkalas",
@@ -231,7 +231,7 @@ export const data = [
             },
             {
                 id: "6",
-                path: "",
+                path: "m517.5,360c0,0 -5,-270 -5.00001,-270",
                 description: "Start högercrimp och grepp nära areten, areten ingår inte",
                 name: "Kraftlös",
                 cragLink: "https://27crags.com/crags/utby-boulder/routes/kragtlos",
@@ -241,7 +241,7 @@ export const data = [
             },
             {
                 id: "7",
-                path: "",
+                path: "m218.33333,387.5c0,0 66.66667,-29.16667 110.83333,-24.16667c50.83334,6.66667 113.33334,65.83334 146.66666,56.66667c49.16667,0.00001 37.50001,-264.16666 25.83333,-326.66666",
                 description: "Start i voodoo låg, travers till kraftkalas låg",
                 name: "Mumbo jumbo kraft",
                 cragLink: "",
@@ -251,7 +251,7 @@ export const data = [
             },
             {
                 id: "8",
-                path: "",
+                path: "m435.83333,453.33333c0,0 13.33333,-118.33333 -11.66667,-136.66667c-29.16666,-23.33333 -152.49999,-46.66666 -164.16666,-77.5c-13.33333,-31.66666 88.33334,-150.83333 95,-148.33333",
                 description: "Börjar på kraftkalas, samma cruxet som Voodoo doll, avslutar på barnkalas",
                 name: "Russian Doll",
                 cragLink: "",
@@ -261,7 +261,7 @@ export const data = [
             },
             {
                 id: "9",
-                path: "",
+                path: "m232.5,395.83333c0,0 25,-115.83333 42.5,-150c13.33334,-40 110,-155.83333 110,-155.83333",
                 description: "Gemensam lågststart med Voodoo men toppar i Barnkalas",
                 name: "Barnkalas lågstart",
                 cragLink: "",
@@ -271,7 +271,7 @@ export const data = [
             },
             {
                 id: "10",
-                path: "",
+                path: "m322.5,374.16667l-29.16667,-58.33334c-7.77778,-36.11112 -3.05556,-52.22222 6.66667,-80.83333l33.33333,-39.16667",
                 description: "Sittstart under den överhängande näsan",
                 name: "Liten illusion",
                 cragLink: "https://27crags.com/crags/utby-boulder/routes/liten-illusion",
@@ -281,7 +281,7 @@ export const data = [
             },
             {
                 id: "11",
-                path: "",
+                path: "m326,421c-5.33333,-7.66667 -10.66667,-15.33333 -16,-23l11,-21l27,-26l15,-56l8,-74l-27,-39",
                 description: "startar liggande längst in och jammar sig upp via sprickan.",
                 name: "Liten illusion (sprickan)",
                 cragLink: "https://27crags.com/crags/utby-boulder/routes/liten-illusion-sprickan",

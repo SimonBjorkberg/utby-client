@@ -111,7 +111,8 @@ export default function Sector() {
 
                     {sector.images.length >= 2 && <>
                         <div className="w-full relative">
-                            <div onClick={() => handleImageSelect()} className="absolute top-[0] bg-red-500 h-full w-10 left-0">
+                            <div onClick={() => handleImageSelect()} className="absolute top-[calc(50%-20px)] w-10 left-0">
+                                <svg className="rotate-180 stroke-red-500" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="red" opacity="0" transform="matrix(0 -1 1 0 0 24)" /><path d="m10 19a1 1 0 0 1 -.64-.23 1 1 0 0 1 -.13-1.41l4.48-5.36-4.32-5.37a1 1 0 0 1 .15-1.41 1 1 0 0 1 1.46.15l4.83 6a1 1 0 0 1 0 1.27l-5 6a1 1 0 0 1 -.83.36z" fill="#231f20" /></svg>
                             </div>
                             {sector.images[0] && <svg viewBox="0 0 800 600" className="object-fit w-full md:h-[600px] h-[400px] bg-neutral-900" xmlns="http://www.w3.org/2000/svg">
                                 <image href={sector.images[imageNum].src} className="object-fit w-full h-full" />
@@ -121,7 +122,8 @@ export default function Sector() {
                                     ) : null
                                 ))}
                             </svg>}
-                            <div onClick={() => handleImageSelect()} className="absolute top-[0] bg-red-500 h-full w-10 right-0">
+                            <div onClick={() => handleImageSelect()} className="absolute top-[calc(50%-20px)] w-10 right-0">
+                                <svg className="stroke-red-500" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="red" opacity="0" transform="matrix(0 -1 1 0 0 24)" /><path d="m10 19a1 1 0 0 1 -.64-.23 1 1 0 0 1 -.13-1.41l4.48-5.36-4.32-5.37a1 1 0 0 1 .15-1.41 1 1 0 0 1 1.46.15l4.83 6a1 1 0 0 1 0 1.27l-5 6a1 1 0 0 1 -.83.36z" fill="#231f20" /></svg>
                             </div>
                         </div>
                         <div className="w-full overflow-y-scroll">
