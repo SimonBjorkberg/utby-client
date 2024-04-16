@@ -75,6 +75,9 @@ export default function Sector() {
         changeImage()
     }, [selectedPath])
 
+    console.log(sector)
+    console.log(imageNum)
+
     return (
         <>
             <div>
@@ -84,7 +87,7 @@ export default function Sector() {
                         <p onClick={() => router.push('/')}>Hem</p>
                     </div>
 
-                    {sector.images.length < 2 && <>
+                    {sector.images.length <= 1 && <>
                         <div className="w-full">
                             {sector.images[0] && <svg viewBox="0 0 800 600" className="object-fit w-full md:h-[600px] h-[400px] bg-neutral-900" xmlns="http://www.w3.org/2000/svg">
                                 <image href={sector.images[0]} className="object-fit w-full h-full" />
@@ -113,7 +116,7 @@ export default function Sector() {
                                 <svg className="rotate-180 stroke-red-500" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="red" opacity="0" transform="matrix(0 -1 1 0 0 24)" /><path d="m10 19a1 1 0 0 1 -.64-.23 1 1 0 0 1 -.13-1.41l4.48-5.36-4.32-5.37a1 1 0 0 1 .15-1.41 1 1 0 0 1 1.46.15l4.83 6a1 1 0 0 1 0 1.27l-5 6a1 1 0 0 1 -.83.36z" fill="#231f20" /></svg>
                             </div>
                             {sector.images[0] && <svg viewBox="0 0 800 600" className="object-fit w-full md:h-[600px] h-[400px] bg-neutral-900" xmlns="http://www.w3.org/2000/svg">
-                                <image href={sector.images[imageNum].src} className="object-fit w-full h-full" />
+                                <image href={sector.images[imageNum]} className="object-fit w-full h-full" />
                                 {sector.boulders.map((boulder, i) => (
                                     boulder.imageRef - 1 === imageNum ? (
                                         <Path key={i} boulder={boulder} setSelectedPath={setSelectedPath} selectedPath={selectedPath} />
