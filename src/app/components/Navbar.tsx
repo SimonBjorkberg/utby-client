@@ -48,7 +48,7 @@ export default function Navbar() {
                                 </div>
                                 <div className={`w-full transition-all duration-300 bg-green-500 overflow-y-auto ${showInfo === marker.id ? "h-52" : "h-0"}`}>
                                     {<ul>
-                                        {marker.boulders?.map((boulder, i ) => {
+                                        {marker.boulders?.map((boulder, i) => {
                                             return <li className="p-2" key={i}>{boulder.name}</li>
                                         })}
                                     </ul>}

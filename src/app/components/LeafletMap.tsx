@@ -1,14 +1,43 @@
 'use client'
 import 'leaflet/dist/leaflet.css'
-import { data } from '../../../public/data/data'
 
 import { MapContainer, TileLayer, Circle, Popup } from 'react-leaflet'
 import { useRouter } from 'next/navigation'
 import GeoLocation from './GeoLocation';
 import SectionMarker from './SectionMarker'
+import { useEffect, useState } from 'react'
+import dataService from '../utils/data.service'
+
+interface Data {
+    name: string,
+    boulders: {
+        name: string,
+        grade: string,
+        description: string,
+        path: string,
+    }[],
+    images: string[],
+    position: {
+        latitude: number,
+        longitude: number,
+    },
+    _id: string,
+}
 
 export default function LeafletMap() {
+    const [data, setData] = useState<Data[] | []>([])
     const router = useRouter()
+
+    const getData = async () => {
+        const response = await dataService.allSectors();
+        if (response) {
+            setData(response.data)
+        }
+    }
+
+    useEffect(() => {
+        getData()
+    }, [])
 
     return (
         <MapContainer className='w-full h-full' center={[57.74494299413902, 12.057094987938887]} zoom={16} scrollWheelZoom={true}>

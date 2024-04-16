@@ -1,10 +1,10 @@
 'use client'
 
 import { useRouter, useSearchParams } from "next/navigation"
-import { data } from "../../../public/data/data"
 import { useEffect, useState } from "react"
 import Path from "../components/Path"
 import Link from "next/link"
+import dataService from "../utils/data.service"
 
 interface Sector {
     id: string,
@@ -33,17 +33,23 @@ export default function Sector() {
 
     const imageArrayLength: number | undefined = sector?.images.length
 
+    const params = useSearchParams()
     const router = useRouter()
 
-    const params = useSearchParams()
-    const p = params.get('id')
+    const id = params.get('id')
 
-    const getSector = () => {
-        const s = data.filter((sector) => {
-            return sector.id === p;
-        })
-        setSector(s[0])
+    const getSector = async (id: string) => {
+        const response = await dataService.getSector(id)
+        if (response) {
+            setSector(response.data)
+        }
     }
+
+    useEffect(() => {
+        if (id) {
+            getSector(id)
+        }
+    }, [id])
 
     const handleImageSelect = () => {
         if (imageArrayLength) {
@@ -66,10 +72,6 @@ export default function Sector() {
     }
 
     useEffect(() => {
-        getSector()
-    }, [])
-
-    useEffect(() => {
         changeImage()
     }, [selectedPath])
 
@@ -85,7 +87,7 @@ export default function Sector() {
                     {sector.images.length < 2 && <>
                         <div className="w-full">
                             {sector.images[0] && <svg viewBox="0 0 800 600" className="object-fit w-full md:h-[600px] h-[400px] bg-neutral-900" xmlns="http://www.w3.org/2000/svg">
-                                <image href={sector.images[0].src} className="object-fit w-full h-full" />
+                                <image href={sector.images[0]} className="object-fit w-full h-full" />
                                 {sector.boulders.map((boulder, i: number) => {
                                     return <Path key={i} boulder={boulder} setSelectedPath={setSelectedPath} selectedPath={selectedPath} />
                                 })}
@@ -98,10 +100,6 @@ export default function Sector() {
                                         <div>
                                             <p className="font-bold text-sm">{boulder.name}, <span className="font-light">{boulder.grade}</span></p>
                                             <p className="font-light text-sm">{boulder.description}</p>
-                                        </div>
-                                        <div className="flex justify-end gap-4">
-                                            {boulder.gboLink !== "" && <Link className="text-sm font-semibold text-blue-500" href={boulder.gboLink} target="_blank">Gbo.Crimp</Link>}
-                                            {boulder.cragLink !== "" && <Link className="text-sm font-semibold text-blue-500" href={boulder.cragLink} target="_blank">27Crags</Link>}
                                         </div>
                                     </div>
                                 </div>
@@ -133,10 +131,6 @@ export default function Sector() {
                                         <div>
                                             <p className="font-bold text-sm">{boulder.name}, <span className="font-light">{boulder.grade}</span></p>
                                             <p className="font-light text-sm">{boulder.description}</p>
-                                        </div>
-                                        <div className="flex justify-end gap-4">
-                                            {boulder.gboLink !== "" && <Link className="text-sm font-semibold text-blue-500" href={boulder.gboLink} target="_blank">Gbo.Crimp</Link>}
-                                            {boulder.cragLink !== "" && <Link className="text-sm font-semibold text-blue-500" href={boulder.cragLink} target="_blank">27Crags</Link>}
                                         </div>
                                     </div>
                                 </div>
