@@ -4,7 +4,7 @@ class DataService {
     api: any;
     constructor() {
         this.api = axios.create({
-            baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:5005",
+            baseURL: process.env.NEXT_PUBLIC_API_URL
         });
     }
     allSectors = () => {

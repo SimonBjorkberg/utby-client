@@ -1,8 +1,7 @@
 'use client'
 import 'leaflet/dist/leaflet.css'
 
-import { MapContainer, TileLayer, Circle, Popup } from 'react-leaflet'
-import { useRouter } from 'next/navigation'
+import { MapContainer, TileLayer, } from 'react-leaflet'
 import GeoLocation from './GeoLocation';
 import SectionMarker from './SectionMarker'
 import { useEffect, useState } from 'react'
@@ -24,9 +23,13 @@ interface Data {
     _id: string,
 }
 
-export default function LeafletMap() {
+interface Props {
+    setSelSection: any
+}
+
+
+export default function LeafletMap({ setSelSection }: Props) {
     const [data, setData] = useState<Data[] | []>([])
-    const router = useRouter()
 
     const getData = async () => {
         const response = await dataService.allSectors();
@@ -45,7 +48,7 @@ export default function LeafletMap() {
                 url="https://maps.infra.entryscape.com/maps/basic/{z}/{x}/{y}.png?key=srAw96F43apXJCHhfWnu"
             />
             <GeoLocation />
-            {data.map((section, i) => { return <SectionMarker key={i} section={section} /> })}
+            {data.map((section, i) => { return <SectionMarker setSelSection={setSelSection} key={i} section={section} /> })}
         </MapContainer>
     )
 }
