@@ -38,7 +38,7 @@ export default function MapView() {
                 <div className="max-h-40 text-black">
                     <img className="max-w-40 w-40 h-full object-scale-down bg-neutral-900" src={selSection.images[0]} />
                 </div>
-                <div className="w-full p-2 h-full text-black">
+                <div className="w-full p-2 h-full bg-white text-black">
                     <p className="">{selSection.name}</p>
                     <p className="font-extralight text-sm">Antal Boulders: {selSection.boulders.length}</p>
                 </div>

@@ -78,7 +78,7 @@ export default function Sector() {
                 {sector && <main className="flex flex-col items-center justify-between w-full h-dvh">
 
                     <div className="p-3 w-full">
-                        <p onClick={() => router.push('/')}>Hem</p>
+                        <p className="text-white" onClick={() => router.push('/')}>Hem</p>
                     </div>
 
                     {sector.images.length <= 1 && <>
@@ -123,7 +123,7 @@ export default function Sector() {
                         </div>
                         <div className="w-full overflow-y-scroll">
                             {sector.boulders.map((boulder, i) => {
-                                return <div key={i} className={`h-20`} onClick={() => setSelectedPath(boulder._id)}>
+                                return <div key={i} className={`h-20 bg-white`} onClick={() => setSelectedPath(boulder._id)}>
                                     <div className={`w-full h-full flex flex-col p-1 justify-between border-t border-b ${selectedPath === boulder._id ? "bg-neutral-200" : "border-white"}`}>
                                         <div>
                                             <p className="font-bold text-sm">{boulder.name}, <span className="font-light">{boulder.grade}</span></p>
