@@ -10,13 +10,18 @@ interface Point {
 }
 
 import { useRouter, useSearchParams } from "next/navigation"
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef, ChangeEvent } from "react"
 import dataService from "../utils/data.service"
 
 export default function EditSector() {
     const [info, setInfo] = useState<Info | undefined>(undefined)
     const [clickPoints, setClickPoints] = useState<Point[]>([]);
     const canvasRef = useRef<HTMLCanvasElement>(null);
+
+    const [name, setName] = useState("")
+    const [grade, setGrade] = useState("")
+    const [description, setDescription] = useState("")
+    const [imageRef, setImageRef] = useState(0)
 
     const params = useSearchParams()
     const id: string | null = params.get('id')
@@ -43,7 +48,7 @@ export default function EditSector() {
         if (info) {
             const backgroundImage = new Image();
             backgroundImage.src =
-                info?.images[0];
+                info?.images[imageRef];
 
             backgroundImage.onload = () => {
                 ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
@@ -74,7 +79,7 @@ export default function EditSector() {
                 }
             }
         };
-    }, [clickPoints, info]);
+    }, [clickPoints, info, imageRef]);
 
     const handleUndoClick = () => {
         setClickPoints((prevPoints) => {
@@ -99,6 +104,33 @@ export default function EditSector() {
         setClickPoints((prevPoints) => [...prevPoints, { x, y }]);
     };
 
+    const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setName(e.target.value)
+    }
+    const handleGradeChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setGrade(e.target.value)
+    }
+    const handleDescriptionChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setDescription(e.target.value)
+    }
+    const handleImageChange = (e: any) => {
+        setImageRef(e.target.value - 1)
+    }
+
+    const handleSubmit = (e: { preventDefault: () => void }) => {
+        e.preventDefault()
+
+        const info = {
+            id,
+            name,
+            grade,
+            description,
+            path: clickPoints,
+            imageRef
+        }
+        dataService.createBoulder(info)
+    }
+
     return (
         <main className="h-dvh w-full flex flex-col items-center">
             <div className="p-3 w-full flex justify-between bg-orange-500 text-white">
@@ -114,6 +146,75 @@ export default function EditSector() {
                 />
             </div>
             <button className="bg-white p-4 w-full" onClick={handleUndoClick}>Undo</button>
+            {info && <form onSubmit={handleSubmit} className="flex flex-col gap-2 text-xl my-2 w-full max-w-[800px]">
+                <input className="p-3" onChange={(e) => handleNameChange(e)} type="text" placeholder="name" />
+                <input className="p-3" onChange={(e) => handleGradeChange(e)} type="text" placeholder="grade" />
+                <select className="overflow-y-auto p-3">
+                    <option>
+                        4
+                    </option>
+                    <option>
+                        5
+                    </option>
+                    <option>
+                        6A
+                    </option>
+                    <option>
+                        6A+
+                    </option>
+                    <option>
+                        6B
+                    </option>
+                    <option>
+                        6B+
+                    </option>
+                    <option>
+                        6C
+                    </option>
+                    <option>
+                        6C+
+                    </option>
+                    <option>
+                        7A
+                    </option>
+                    <option>
+                        7A+
+                    </option>
+                    <option>
+                        7B
+                    </option>
+                    <option>
+                        7B+
+                    </option>
+                    <option>
+                        7C
+                    </option>
+                    <option>
+                        7C+
+                    </option>
+                    <option>
+                        8A
+                    </option>
+                    <option>
+                        8A+
+                    </option>
+                    <option>
+                        8B
+                    </option>
+                    <option>
+                        8B+
+                    </option>
+                </select>
+                <input className="p-3" onChange={(e) => handleDescriptionChange(e)} type="text" placeholder="description" />
+                {info?.images.length > 1 && <select className="p-3" onChange={(e) => handleImageChange(e)}>
+                    {info?.images.map((image, i) => {
+                        return <option key={i}>
+                            {i + 1}
+                        </option>
+                    })}
+                </select>}
+                <button type="submit">Submit</button>
+            </form>}
         </main>
     )
 }

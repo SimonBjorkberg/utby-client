@@ -13,6 +13,9 @@ class DataService {
     getSector = (id: string) => {
         return this.api.get(`/section/one/${id}`)
     }
+    createBoulder = (body: {}) => {
+        return this.api.post(`/boulder/create`, body )
+    }
 }
 
 const dataService = new DataService();
