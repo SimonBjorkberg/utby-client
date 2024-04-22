@@ -75,10 +75,10 @@ export default function Sector() {
     return (
         <>
             <div>
-                {sector && <main className="flex flex-col items-center justify-between w-full h-dvh">
+                {sector && <main className="flex flex-col items-center w-full h-dvh bg-white">
 
-                    <div className="p-3 w-full">
-                        <p className="text-white" onClick={() => router.push('/')}>Hem</p>
+                    <div className="p-3 w-full bg-orange-500 text-white">
+                        <p onClick={() => router.push('/')}>Hem</p>
                     </div>
 
                     {sector.images.length <= 1 && <>
