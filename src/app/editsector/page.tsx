@@ -107,7 +107,7 @@ export default function EditSector() {
     const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
         setName(e.target.value)
     }
-    const handleGradeChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleGradeChange = (e: any) => {
         setGrade(e.target.value)
     }
     const handleDescriptionChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -117,9 +117,7 @@ export default function EditSector() {
         setImageRef(e.target.value - 1)
     }
 
-    console.log(grade)
-
-    const handleSubmit = (e: { preventDefault: () => void }) => {
+    const handleSubmit = async (e: { preventDefault: () => void }) => {
         e.preventDefault()
 
         const info = {
@@ -130,7 +128,12 @@ export default function EditSector() {
             path: clickPoints,
             imageRef
         }
-        dataService.createBoulder(info)
+        if (info.path.length >= 2) {
+            const response = await dataService.createBoulder(info)
+            if (response.data.message) {
+                router.push(`/sector?id=${id}`)
+            }
+        }
     }
 
     return (

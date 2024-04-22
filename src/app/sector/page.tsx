@@ -80,9 +80,11 @@ export default function Sector() {
 
     const getSector = async (id: string) => {
         const response = await dataService.getSector(id)
-        if (response) {
+        if (response.data) {
             setSector(response.data)
-            setSelectedPath(response.data.boulders[0]._id)
+            if (response.data.boulders[0]) {
+                setSelectedPath(response.data.boulders[0]._id)
+            }
         }
     }
     useEffect(() => {
