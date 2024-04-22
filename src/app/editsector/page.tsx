@@ -19,7 +19,7 @@ export default function EditSector() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     const [name, setName] = useState("")
-    const [grade, setGrade] = useState("")
+    const [grade, setGrade] = useState("4")
     const [description, setDescription] = useState("")
     const [imageRef, setImageRef] = useState(0)
 
@@ -128,7 +128,7 @@ export default function EditSector() {
             path: clickPoints,
             imageRef
         }
-        if (info.path.length >= 2) {
+        if (info.path.length >= 2 && info.name !== "" && info.description !== "") {
             const response = await dataService.createBoulder(info)
             if (response.data.message) {
                 router.push(`/sector?id=${id}`)
