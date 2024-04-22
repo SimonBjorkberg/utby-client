@@ -148,7 +148,6 @@ export default function EditSector() {
             <button className="bg-white p-4 w-full" onClick={handleUndoClick}>Undo</button>
             {info && <form onSubmit={handleSubmit} className="flex flex-col gap-2 text-xl my-2 w-full max-w-[800px]">
                 <input className="p-3" onChange={(e) => handleNameChange(e)} type="text" placeholder="name" />
-                <input className="p-3" onChange={(e) => handleGradeChange(e)} type="text" placeholder="grade" />
                 <select className="overflow-y-auto p-3">
                     <option>
                         4
