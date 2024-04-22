@@ -70,6 +70,7 @@ export default function Sector() {
 
     useEffect(() => {
         changeImage()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedPath])
 
     return (
@@ -77,8 +78,9 @@ export default function Sector() {
             <div>
                 {sector && <main className="flex flex-col items-center w-full h-dvh bg-white">
 
-                    <div className="p-3 w-full bg-orange-500 text-white">
-                        <p onClick={() => router.push('/')}>Hem</p>
+                    <div className="p-3 w-full flex justify-between bg-orange-500 text-white">
+                        <p onClick={() => router.push('/')}>Home</p>
+                        <p  onClick={() => router.push(`/editsector?id=${id}`)}>Edit</p>
                     </div>
 
                     {sector.images.length <= 1 && <>
