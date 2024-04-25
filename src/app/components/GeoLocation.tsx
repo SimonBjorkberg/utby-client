@@ -66,7 +66,7 @@ export default function GeoLocation() {
                     width="20"
                     height="20"
                     viewBox="0 0 24 24"
-                    fill="#3182ce" // Adjust the fill color as needed
+                    fill="#3182ce"
                 >
                     <circle cx="12" cy="12" r="10" />
                 </svg>

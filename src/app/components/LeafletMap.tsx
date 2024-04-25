@@ -21,14 +21,15 @@ interface Data {
         longitude: number,
     },
     _id: string,
-}
+};
 
 interface Props {
-    setSelSection: any
-}
+    setSelSection: any,
+    selSection: any,
+};
 
 
-export default function LeafletMap({ setSelSection }: Props) {
+export default function LeafletMap({ setSelSection, selSection }: Props) {
     const [data, setData] = useState<Data[] | []>([])
 
     const getData = async () => {
@@ -48,7 +49,7 @@ export default function LeafletMap({ setSelSection }: Props) {
                 url="https://maps.infra.entryscape.com/maps/basic/{z}/{x}/{y}.png?key=srAw96F43apXJCHhfWnu"
             />
             <GeoLocation />
-            {data.map((section, i) => { return <SectionMarker setSelSection={setSelSection} key={i} section={section} /> })}
+            {data.map((section, i) => { return <SectionMarker setSelSection={setSelSection} key={i} section={section} selSection={selSection} /> })}
         </MapContainer>
     )
 }
