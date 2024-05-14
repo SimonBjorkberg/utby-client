@@ -5,7 +5,7 @@ import dataService from "../utils/data.service"
 
 interface Sector {
     id: string,
-    title: string,
+    name: string,
     position: {
         lat: number
         lng: number
@@ -39,11 +39,19 @@ export default function Sector() {
 
         if (sector) {
             const backgroundImage = new Image();
-            backgroundImage.src =
-                sector?.images[imageRef];
-
             backgroundImage.onload = () => {
-                ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+                const scaleX = canvas.width / backgroundImage.width;
+                const scaleY = canvas.height / backgroundImage.height;
+                const scale = Math.min(scaleX, scaleY);
+
+                const newWidth = backgroundImage.width * scale;
+                const newHeight = backgroundImage.height * scale;
+
+                const x = (canvas.width - newWidth) / 2;
+                const y = (canvas.height - newHeight) / 2;
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(backgroundImage, x, y, newWidth, newHeight);
 
                 sector.boulders.map((boulder) => {
                     if (imageRef === boulder.imageRef) {
@@ -57,20 +65,20 @@ export default function Sector() {
                         }
 
                         if (selectedPath === boulder._id) {
-                            ctx.lineWidth = 3
-                            ctx.strokeStyle = "red"
-                        }
-                        else if (boulder._id !== selectedPath) {
-                            ctx.lineWidth = 2
-                            ctx.strokeStyle = "black"
+                            ctx.lineWidth = 3;
+                            ctx.strokeStyle = "red";
+                        } else if (boulder._id !== selectedPath) {
+                            ctx.lineWidth = 2;
+                            ctx.strokeStyle = "black";
                         }
 
                         ctx.lineTo(boulder.path[boulder.path.length - 1].x, boulder.path[boulder.path.length - 1].y);
                         ctx.stroke();
                     }
-                })
-            }
-        };
+                });
+            };
+            backgroundImage.src = sector.images[imageRef];
+        }
     }, [sector, imageRef, selectedPath]);
 
     const params = useSearchParams()
@@ -121,13 +129,19 @@ export default function Sector() {
     return (
         <>
             <div>
-                {sector && <main className="flex flex-col items-center w-full h-dvh bg-white">
-
-                    <div className="p-3 w-full flex justify-between bg-orange-500 text-white">
-                        <p onClick={() => router.push('/')}>Home</p>
-                        <p onClick={() => router.push(`/editsector?id=${id}`)}>Edit</p>
-                    </div>
-                    <div className="w-full relative max-w-[800px]">
+                {sector && <main className="flex flex-col items-center w-full h-dvh bg-white roboto-regular">
+                    <nav className={`text-2xl flex justify-center relative py-4 w-full bg-orange-500 text-white`}>
+                        <p className="">{sector.name}</p>
+                        <svg onClick={() => router.push('/map')} className='w-10 rotate-180 absolute left-0 top-[calc(50%-20px)]' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m0 0h24v24h-24z" fill="white" stroke="white" opacity="0" transform="matrix(0 -1 1 0 0 24)" />
+                            <path d="m10 19a1 1 0 0 1 -.64-.23 1 1 0 0 1 -.13-1.41l4.48-5.36-4.32-5.37a1 1 0 0 1 .15-1.41 1 1 0 0 1 1.46.15l4.83 6a1 1 0 0 1 0 1.27l-5 6a1 1 0 0 1 -.83.36z" fill="white" />
+                        </svg>
+                        <svg onClick={() => router.push(`/editsector?id=${id}`)} viewBox="0 0 24 24" className="w-10 absolute right-0 top-[calc(50%-20px)]" fill="white">
+                            <path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)" />
+                            <path d="m19 11h-6v-6a1 1 0 0 0 -2 0v6h-6a1 1 0 0 0 0 2h6v6a1 1 0 0 0 2 0v-6h6a1 1 0 0 0 0-2z" fill="white" />
+                        </svg>
+                    </nav>
+                    <div className="w-full relative max-w-[800px] bg-neutral-900">
                         <div onClick={() => handleImageSelect()} className="absolute top-[calc(50%-20px)] w-10 left-0">
                             <svg className="rotate-180 stroke-red-500" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h24v24h-24z" fill="red" opacity="0" transform="matrix(0 -1 1 0 0 24)" /><path d="m10 19a1 1 0 0 1 -.64-.23 1 1 0 0 1 -.13-1.41l4.48-5.36-4.32-5.37a1 1 0 0 1 .15-1.41 1 1 0 0 1 1.46.15l4.83 6a1 1 0 0 1 0 1.27l-5 6a1 1 0 0 1 -.83.36z" fill="#231f20" /></svg>
                         </div>

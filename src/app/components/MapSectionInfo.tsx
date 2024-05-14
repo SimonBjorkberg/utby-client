@@ -19,7 +19,7 @@ export default function MapSectionInfo({ show, selSection, setSelSection }: Prop
     return (
         <div className={`transition-all duration-300 w-full min-h-[140px] max-h-[140px] flex text-white bg-white ${show ? "h-[140px]" : "h-0"}`}>
             <div className="max-h-40 text-black">
-                <Image className="max-w-40 w-40 h-full object-scale-down bg-neutral-900" width={160} height={160} src={selSection.images[0]} alt="" />
+                <Image className="w-40 max-w-40 h-full object-scale-down bg-neutral-900" width={160} height={160} src={selSection.images[0]} alt="" />
             </div>
             <div className="w-full p-2 h-full bg-white text-black">
                 <p className="">{selSection.name}</p>
@@ -42,7 +42,6 @@ export default function MapSectionInfo({ show, selSection, setSelSection }: Prop
                         <line x1="18" y1="6" x2="6" y2="18" />
                         <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
-
                 </button>
                 <button>
                     <svg onClick={() => router.push(`/sector?id=${selSection._id}`)} className='w-10 bg-orange-500' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

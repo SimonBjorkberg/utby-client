@@ -8,13 +8,19 @@ class DataService {
         });
     }
     allSectors = () => {
-        return this.api.get(`/section/all`)
+        return this.api.get(`/section/all`);
     }
     getSector = (id: string) => {
-        return this.api.get(`/section/one/${id}`)
+        return this.api.get(`/section/one/${id}`);
     }
     createBoulder = (body: {}) => {
-        return this.api.post(`/boulder/create`, body )
+        return this.api.post(`/boulder/create`, body);
+    }
+    createSector = (body: {}) => {
+        return this.api.post(`/section/create`, body);
+    }
+    uploadImage = (image: any) => {
+        return this.api.post(`/section/upload`, image);
     }
 }
 
