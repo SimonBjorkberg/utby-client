@@ -38,15 +38,30 @@ export default function Test() {
         }
     }
 
+    const appendImage = async (image: any) => {
+        const formData = new FormData();
+        formData.append("imageUrl", image);
+        const response = await dataService.uploadImage(formData);
+        return response.data.fileUrl
+    }
+
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault()
 
-        const body = { name: sectorName, position: { lat: sectorCoords.lat, lon: sectorCoords.lon }, images, zone }
+        const uploadedImages: string[] = [];
 
-        console.log(images)
+        const body = { name: sectorName, position: { lat: sectorCoords.lat, lon: sectorCoords.lon }, zone }
+
+        for (let i = 0; i < images.length; i++) {
+            const response = await appendImage(images[i]);
+            uploadedImages.push(response);
+        }
+        if (uploadedImages.length > 0) {
+            dataService.createSector({ name: sectorName, position: { latitude: sectorCoords.lat, longitude: sectorCoords.lon }, zone, uploadedImages })
+        }
     }
 
-    return <main className="roboto-regular bg-white h-dvh flex flex-col">
+    return <main className="roboto-regular bg-white h-fit flex flex-col">
         <nav className={`text-3xl flex justify-center relative py-4 w-full bg-orange-500 text-white`}>
             <p className='font-light'>Create Sector</p>
             <svg onClick={() => router.push('/map')} className='w-10 rotate-180 absolute left-0 top-[calc(50%-20px)]' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -56,11 +71,11 @@ export default function Test() {
         </nav>
         <div className="h-full max-h-full flex flex-col bg-white">
             <Carousel canvasRef={canvasRef} images={images} />
-            <form onSubmit={handleSubmit} className="flex flex-col items-center m-2">
+            <form onSubmit={handleSubmit} className="flex flex-col items-center my-2 mx-2">
                 <input onChange={handleImageChange} type="file" className="border p-2 w-full border-orange-500 rounded-md" multiple />
                 <div className="flex flex-col w-full gap-2 mt-2">
                     <input onChange={(e) => setSectorName(e.target.value)} value={sectorName} type="text" placeholder="Sector Name" className="border p-2 w-full border-orange-500 rounded-md" />
-                    <select onChange={(e => {setZone(e.target.value)})} value={zone} className="border p-2 w-full border-orange-500 rounded-md">
+                    <select onChange={(e => { setZone(e.target.value) })} value={zone} className="border p-2 w-full border-orange-500 rounded-md">
                         <option>Utby</option>
                     </select>
                     <p className="font-light text-lg">Coordinates</p>
@@ -72,7 +87,7 @@ export default function Test() {
                             value={sectorCoords.lat || ""}
                             onChange={(e) => setSectorCoords({ ...sectorCoords, lat: e.target.value })}
                         />
-                        <input
+                        < input
                             type="text"
                             placeholder="Lon"
                             className="border p-2 w-full border-orange-500 rounded-md"
